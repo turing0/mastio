@@ -34,8 +34,8 @@ const Sidebar = () => {
     const HOSTURL = process.env.HOST_URL;
     // const { server, username } = useCurrentUserLocal();
     const { server, username, signOut } = useCurrentUserContext();
-    console.log('Sidebar useCurrentUserContext:', username, server);
-    console.log('HOSTURL:', HOSTURL);
+    // console.log('Sidebar useCurrentUserContext:', username, server);
+    // console.log('HOSTURL:', HOSTURL);
     // addKV('users', {server: 'xmc.im', acct: {id: '1234'}});
     // deleteFirstKV('users');
     const items = [

@@ -72,8 +72,8 @@ const LoginModal = () => {
                     'Content-Type': 'application/json'
                 }
             })
-            console.log(response.data);
-            router.push(response.data);
+            // console.log(response.data);
+            // router.push(response.data);
 
             // signIn('credentials', { 'url': server, 'accessToken': '123456' });
             

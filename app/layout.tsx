@@ -1,6 +1,6 @@
 import Layout from './components/Layout'
 import LoginModal from './components/modals/LoginModal'
-import AuthContext from './context/AuthContext'
+// import AuthContext from './context/AuthContext'
 import './globals.css'
 import { Inter } from 'next/font/google'
 import ToasterContext from './context/ToasterContext'
