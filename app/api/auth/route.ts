@@ -1,42 +1,7 @@
 import { getRedisKey, setRedisKey } from '@/app/actions/redisKey';
 import axios from 'axios';
 import { NextResponse } from "next/server";
-
-// const MastodonAuth = () => {
-//   const router = useRouter();
-
-//     // 获取URL中的授权码
-//     const code = new URLSearchParams(window.location.search).get('code');
-
-//     if (code) {
-//       // 如果存在授权码，获取访问令牌
-//       fetch('https://<your-mastodon-instance>/oauth/token', {
-//         method: 'POST',
-//         headers: {
-//           'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify({
-//           client_id: '<your-app-id>',
-//           client_secret: '<your-app-secret>',
-//           code: code,
-//           grant_type: 'authorization_code',
-//           redirect_uri: '<your-callback-url>',
-//         }),
-//       })
-//         .then((response) => response.json())
-//         .then((data) => {
-//           // 保存访问令牌
-//           localStorage.setItem('access_token', data.access_token);
-//         });
-//     } else {
-//       // 如果不存在授权码，重定向用户到授权URL
-//       window.location.href = `https://<your-mastodon-instance>/oauth/authorize?client_id=<your-app-id>&redirect_uri=<your-callback-url>&response_type=code`;
-//     }
   
-
-//   return 123;
-// };
-
 // urn:ietf:wg:oauth:2.0:oob
 // const VERCELURL = process.env.VERCEL_URL;
 const HOSTURL = process.env.HOST_URL;
@@ -87,8 +52,8 @@ export async function POST(
 
       // if (!code) {
       //   const response = await axios.post(`https://${serverUrl}/oauth/token`, {
-      //     client_id: 'fsTCP1D5AdVgiDDEmfEs6n9gEku-qDt3kuZbaJJxmvY',
-      //     client_secret: 'fiV-BRSuxriLt37ffbBmp2FeAlPrTykgRssI4yoOphA',
+      //     client_id: '',
+      //     client_secret: '',
       //     code: code,
       //     grant_type: 'authorization_code',
       //     redirect_uri: `${HOSTURL}/api/auth`,
