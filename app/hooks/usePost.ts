@@ -1,5 +1,5 @@
 import useSWR from 'swr';
-import fetcher2 from '../libs/fetcher2';
+import fetcher from '../libs/fetcher';
 import { useCurrentUserContext } from '../context/UserProvider';
 
 const usePost = (server: string, statusId?: string) => {
@@ -13,13 +13,13 @@ const usePost = (server: string, statusId?: string) => {
 
     const { data, error, isLoading, mutate } = useSWR(
         server ? url : null, 
-        (url) => fetcher2(url, token!),
+        (url) => fetcher(url, token!),
         { revalidateOnFocus: false }
     );
     
     const { data: statusContext, mutate: mutateComment } = useSWR(
         server ? url+'/context' : null, 
-        (url) => fetcher2(url, token!),
+        (url) => fetcher(url, token!),
         { revalidateOnFocus: false }
     );
     // console.log('usePost params:', server, statusId);

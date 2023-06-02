@@ -1,5 +1,5 @@
 import useSWR from 'swr';
-import fetcher2 from '../libs/fetcher2';
+import fetcher from '../libs/fetcher';
 import { useCurrentUserContext } from '../context/UserProvider';
 
 // type UserDataType = {
@@ -16,7 +16,7 @@ const useCurrentUser = () => {
       useSWR(
         server && token ? `https://${server}/api/v1/accounts/verify_credentials`
          : null, 
-        (url) => fetcher2(url, token!), 
+        (url) => fetcher(url, token!), 
         { revalidateOnFocus: false }
       );
     // console.log('useCurrentUser:',);

@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 import useSWR from "swr";
 import { toast } from "react-hot-toast";
 import { postWithToken } from "../actions/postWithToken";
-import fetcher2 from "../libs/fetcher2";
+import fetcher from "../libs/fetcher";
 import { useCurrentUserContext } from "../context/UserProvider";
 
 const useRelationships = (server: string, userId: string) => {
@@ -11,7 +11,7 @@ const useRelationships = (server: string, userId: string) => {
     const url = `https://${server}/api/v1/accounts/relationships?id[]=${userId}`;
     const { data, error, isLoading, mutate } = useSWR(
         token ? url : null,
-        (url: string) => fetcher2(url, token!),
+        (url: string) => fetcher(url, token!),
         { revalidateOnFocus: false }
     );
   

@@ -1,5 +1,5 @@
 import useSWR from 'swr';
-import fetcher2 from '../libs/fetcher2';
+import fetcher from '../libs/fetcher';
 import { useCurrentUserContext } from '../context/UserProvider';
 
 const useUser = (server: string, userId: string) => {
@@ -12,7 +12,7 @@ const useUser = (server: string, userId: string) => {
           // ? `https://${server}/api/v1/accounts/${userId}/`
           ? `https://${server}/api/v1/accounts/lookup?acct=${userId}`
           : null,
-        (url) => fetcher2(url, token!),
+        (url) => fetcher(url, token!),
         { revalidateOnFocus: false }
       );
 

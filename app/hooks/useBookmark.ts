@@ -9,7 +9,7 @@ import { useCurrentUserContext } from "../context/UserProvider";
 //     const url = `https://${server}/api/v1/accounts/relationships?id[]=${userId}`;
 //     const { data, error, isLoading, mutate } = useSWR(
 //         token ? url : null,
-//         (url: string) => fetcher2(url, token!),
+//         (url: string) => fetcher(url, token!),
 //         { revalidateOnFocus: false }
 //     );
   
