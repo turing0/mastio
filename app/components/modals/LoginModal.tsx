@@ -73,7 +73,7 @@ const LoginModal = () => {
                 }
             })
             // console.log(response.data);
-            // router.push(response.data);
+            router.push(response.data);
 
             // signIn('credentials', { 'url': server, 'accessToken': '123456' });
             
