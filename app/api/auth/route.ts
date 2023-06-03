@@ -47,7 +47,8 @@ export async function POST(
         const redirectUrl = 
         `https://${server}/oauth/authorize?client_id=${clientId}&scope=read+write+push&redirect_uri=${HOSTURL}/api/${server}/oauth&response_type=code`;
 
-        return NextResponse.json(redirectUrl);
+        return NextResponse.redirect(redirectUrl);
+        // NextResponse.redirect
       }
 
       // if (!code) {
