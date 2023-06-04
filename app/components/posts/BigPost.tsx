@@ -85,7 +85,7 @@ const BigPost = ({
 			<div className="flex flex-col flex-1">
 				<div className="flex flex-1">
 					<div className="flex flex-1 gap-x-1 text-sm">
-						<span onClick={goToUser} className="text-slate-900 font-bold cursor-pointer">
+						<span onClick={goToUser} className="text-slate-900 font-bold cursor-pointer hover:underline">
 							{data?.account?.display_name}
 						</span>
 						<span className="text-slate-600 font-medium">

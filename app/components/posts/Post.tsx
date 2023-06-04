@@ -69,7 +69,7 @@ const Post = ({
 	
 	return (
 		<div onClick={goToPost}
-			className="flex flex-1 gap-x-4 cursor-pointer transition" 
+			className="flex flex-1 gap-x-4 transition cursor-pointer" 
 		>
 			<div onClick={(ev: any) => {ev.stopPropagation();}} className="flex-shrink-0">
 				<HoverCardDemo
@@ -87,7 +87,7 @@ const Post = ({
 			<div className="flex flex-col flex-1">
 				<div className="flex flex-1">
 					<div className="flex flex-1 gap-x-1 text-sm">
-						<span onClick={goToUser} className="text-slate-900 font-bold cursor-pointer">
+						<span onClick={goToUser} className="text-slate-900 font-bold cursor-pointer hover:underline">
 							{data?.account?.display_name}
 							</span>
 						<span className="text-slate-600 font-medium cursor-pointer">

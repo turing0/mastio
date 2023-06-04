@@ -92,9 +92,9 @@ const Feed: React.FC<PostFeedProps> = ({ server, userId, type }) => {
 								server={server}
 							>
 								<div style={{ 
-								display: 'flex', 
-								flexWrap: 'wrap', 
-								justifyContent: 'space-between' 
+									display: 'flex', 
+									flexWrap: 'wrap', 
+									justifyContent: 'space-between' 
 								}}>
 								{
 									post?.media_attachments?.length > 0 && post?.media_attachments.map((attachment: { preview_url: string }, id: number) => (
