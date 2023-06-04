@@ -43,6 +43,10 @@ const TweetForm: React.FC<FormProps> = ({placeholder, isComment, postId, width})
     const [status, setStatus] = useState('');
     const [isTextareaFocused, setTextareaFocused] = useState(false);
 
+	if (!account) {
+		return <></>;
+	}
+	
 	const onSubmit = useCallback(async () => {
         try {
           setIsLoading(true);
@@ -68,6 +72,7 @@ const TweetForm: React.FC<FormProps> = ({placeholder, isComment, postId, width})
           setIsLoading(false);
         }
       }, [status, isComment, postId, mutatePosts, server]);
+
 
 
 	return (
@@ -143,7 +148,7 @@ const TweetForm: React.FC<FormProps> = ({placeholder, isComment, postId, width})
 							disabled={isLoading || !status.trim()}
 							className="inline-flex items-center font-bold rounded-full border px-4 py-2 text-sm bg-slate-900 text-white border-transparent disabled:opacity-50 transition-opacity duration-200"
 						>
-							Publish
+							{isComment ? "Reply" : "Publish"}
 						</button>
 					</div>
 				</div>

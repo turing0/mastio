@@ -6,6 +6,8 @@ import Post from "@/app/components/posts/Post";
 import usePost from "@/app/hooks/usePost";
 import { Suspense } from "react";
 import { ClipLoader } from "react-spinners";
+import TweetForm from "@/app/components/TweetForm";
+import CommentFeed from "@/app/components/posts/CommentFeed";
 
 // import Form from "@/app/components/Form";
 // import Header from "@/app/components/Header";
@@ -87,8 +89,8 @@ const StatusView = ({ params }: { params: StatusViewParams }) => {
           </li>
 			  </ul>
 
-        {/* <Form postId={statusId as string} isComment placeholder="Tweet your reply" /> */}
-        {/* <CommentFeed comments={statusContext} server={server} /> */}
+        <TweetForm postId={statusId as string} isComment placeholder="Reply here" />
+        <CommentFeed comments={statusContext} server={server} />
       </>
      );
   }
