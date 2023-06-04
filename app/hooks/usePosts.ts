@@ -13,7 +13,7 @@ const usePosts = (server?: string, userId?: string, type?: string, maxId?: strin
 
     if (!userId) {
         if (type==='home') {
-            url = `https://${server}/api/v1/timelines/home`;
+            url = `https://${server}/api/v1/timelines/home?limit=30`;
         } else if (type === 'trends') {
             url = `https://${server}/api/v1/trends/statuses`;
         } else if (type === 'local') {

@@ -18,6 +18,7 @@ import {
 } from 'react-icons/hi2';
 import AccountNavItem from '../AccountNavItem';
 import clsx from 'clsx';
+import { useCurrentUserContext } from '@/app/context/UserProvider';
 
 interface NavLinkItem {
 	href: string;
@@ -78,6 +79,7 @@ const items: NavLinkItem[] = [
 
 const Nav = () => {
 	const [selectedNavItem, setSelectedNavItem] = useState("explore");
+	const {account} = useCurrentUserContext();
 
 	return (
 		<>
@@ -105,7 +107,7 @@ const Nav = () => {
 					{/* <DialogDemo /> */}
 				</div>
 				<div>
-					<AccountNavItem />
+					<AccountNavItem data={account} />
 				</div>
 			</div>
 		</header>

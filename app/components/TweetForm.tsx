@@ -32,8 +32,8 @@ function TweetForm({ width }: { width: 'default' | 'full' }) {
 		<div className={TweetFormStyles({ width })}>
 			<Avatar
 				src={account?.avatar!}
-				alt="Roy Quilor"
-				initials="RQ"
+				alt={account?.display_name || ''}
+				initials=""
 			/>
 			<form className="flex flex-col flex-1 gap-y-4">
 				<div className="flex flex-1">

@@ -5,14 +5,16 @@ import Link from 'next/link';
 import { HiOutlineEllipsisHorizontal } from 'react-icons/hi2';
 import Avatar from './radix/Avatar';
 
-const AccountNavItem = () => (
+
+
+const AccountNavItem = ({ data }: {data: any}) => (
 	<div className="flex flex-1 items-center gap-x-2 px-4 py-8 ">
 		<div className="flex items-center gap-x-3 flex-1">
 			<div className="flex flex-1 xl:flex-none justify-center xl:justify-start">
 				<Avatar
-					src="https://pbs.twimg.com/profile_images/1489998205236527108/q2REh8nW_400x400.jpg"
-					alt="Roy Quilor"
-					initials="RQ"
+					src={data?.avatar}
+					alt={data?.display_name}
+					initials=""
 				/>
 			</div>
 			<div className="hidden xl:flex flex-col ">
