@@ -103,8 +103,8 @@ const Nav = () => {
 							</NavItem>
 						</div>
 					))}
-					{/* <PopoverDemo /> */}
-					{/* <DialogDemo /> */}
+					<PopoverDemo />
+					<DialogDemo />
 				</div>
 				<div>
 					<AccountNavItem data={account} />

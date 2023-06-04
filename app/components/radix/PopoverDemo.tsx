@@ -1,4 +1,4 @@
-'use clinet';
+// 'use clinet';
 
 import * as PopoverPrimitive from '@radix-ui/react-popover';
 import * as SeparatorPrimitive from '@radix-ui/react-separator';
