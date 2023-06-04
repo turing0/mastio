@@ -13,7 +13,6 @@ import DropdownMenuDemo from '../radix/DropdownMenu';
 import { useRouter } from 'next/navigation';
 import useLoginModal from '../../hooks/useLoginModal';
 import { formatDistanceToNowStrict } from 'date-fns';
-import parse from 'html-react-parser';
 
 interface Props {
 	data: Record<string, any>;
@@ -30,6 +29,7 @@ interface Props {
 	// description: string;
 	children?: ReactNode;
 }
+
 
 const Post = ({
 	data = {},
@@ -125,10 +125,12 @@ const Post = ({
 							@{data?.account?.acct}
 				</span> */}
 
-				<div className="text-sm text-slate-900 mb-4">
-					{parse(data?.content || data?.reblog?.content || '')}
+				<div 
+					className="text-sm text-slate-900 mb-4"
+					dangerouslySetInnerHTML={{ __html: data?.content ? data?.content : data?.reblog?.content }}>
+					{/* {data?.content} */}
+					{/* <div dangerouslySetInnerHTML={{ __html: data?.content ? data?.content : data?.reblog?.content }} /> */}
 				</div>
-
 				{children}
 				<div>
 					{/* <ul className="flex gap-x-10 xl:gap-x-14 text-xs text-slate-700 [&_li:first-child]:hidden [&_li:first-child]:lg:flex [&_li]:flex [&_li]:items-center [&_li]:gap-x-2 [&_li:xl]:gap-x-3 "> */}
