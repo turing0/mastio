@@ -10,6 +10,7 @@ import {
 import { cva } from 'class-variance-authority';
 import { useState } from 'react';
 import Avatar from './radix/Avatar';
+import { useCurrentUserContext } from '../context/UserProvider';
 
 const TweetFormStyles = cva('flex flex-1 gap-x-2', {
 	variants: {
@@ -25,10 +26,12 @@ const TweetFormStyles = cva('flex flex-1 gap-x-2', {
 
 function TweetForm({ width }: { width: 'default' | 'full' }) {
 	const [input, setInput] = useState<string>('');
+    const { server, account } = useCurrentUserContext();
+
 	return (
 		<div className={TweetFormStyles({ width })}>
 			<Avatar
-				src="https://pbs.twimg.com/profile_images/1489998205236527108/q2REh8nW_400x400.jpg"
+				src={account?.avatar!}
 				alt="Roy Quilor"
 				initials="RQ"
 			/>
@@ -70,7 +73,7 @@ function TweetForm({ width }: { width: 'default' | 'full' }) {
 							disabled={!input}
 							className="inline-flex items-center font-bold rounded-full border px-4 py-2 text-sm bg-slate-900 text-white border-transparent disabled:opacity-50 transition-opacity duration-200"
 						>
-							Tweet
+							Publish
 						</button>
 					</div>
 				</div>

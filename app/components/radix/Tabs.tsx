@@ -63,7 +63,7 @@ const Tabs = ({ server }: TabsProps) => (
 		</TabsPrimitive.List>
 		<TabsPrimitive.Content value="tab1" className="TabsContent ">
 			<TweetForm width="default" />
-			<Feed server="server" type="home" />
+			<Feed server={server} type="home" />
 		</TabsPrimitive.Content>
 		<TabsPrimitive.Content value="tab2" className="TabsContent ">
 			<TweetForm width="default" />
