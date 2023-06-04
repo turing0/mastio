@@ -5,7 +5,11 @@ import clsx from 'clsx';
 import TweetForm from '../TweetForm';
 import Feed from '../posts/Feed';
 
-const Tabs = () => (
+type TabsProps = {
+    server: string;
+}
+
+const Tabs = ({ server }: TabsProps) => (
 	<TabsPrimitive.Root className="TabsRoot" defaultValue="tab1">
 		<TabsPrimitive.List
 			className="TabsList flex w-full bg-white border-b border-b-slate-200"
@@ -59,7 +63,7 @@ const Tabs = () => (
 		</TabsPrimitive.List>
 		<TabsPrimitive.Content value="tab1" className="TabsContent ">
 			<TweetForm width="default" />
-			<Feed type="home" />
+			<Feed server="server" type="home" />
 		</TabsPrimitive.Content>
 		<TabsPrimitive.Content value="tab2" className="TabsContent ">
 			<TweetForm width="default" />

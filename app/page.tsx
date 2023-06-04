@@ -6,12 +6,11 @@ import PanelItemTrends from './components/PanelItemTrends'
 import { useCurrentUserContext } from './context/UserProvider'
 
 export default function Home() {
-  const defaultServer = "mstdn.social";
+  const {server, account: currentUser} = useCurrentUserContext();
 
-  const {account: currentUser} = useCurrentUserContext();
-
-  if (!currentUser) {
+  if (!server || !currentUser) {
     console.log('go to default server');
+    return <></>
     // router.push(`/${defaultServer}/public/local`);
   }
   
@@ -20,7 +19,7 @@ export default function Home() {
 		<title>Home | Mastio</title>
 		
 		<Header title="Home" />
-		<Tabs />
+		<Tabs server={server} />
     </>
   )
 }
