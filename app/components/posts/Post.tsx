@@ -87,12 +87,12 @@ const Post = ({
 			<div className="flex flex-col flex-1">
 				<div className="flex flex-1">
 					<div className="flex flex-1 gap-x-1 text-sm">
-						<span onClick={goToUser} className="text-slate-900 font-bold cursor-pointer hover:underline">
+						<span onClick={goToUser} className="text-slate-900 font-bold cursor-pointer hover:underline truncate inline-block">
 							{data?.account?.display_name}
 							</span>
-						<span className="text-slate-600 font-medium cursor-pointer">
+						<span className="text-slate-600 font-medium cursor-pointer truncate inline-block">
 							@{data?.account?.acct}
-							</span>·
+						</span>·
 						<span className="text-slate-600 font-medium whitespace-nowrap">
 							{createdAt}
 						</span>
@@ -102,6 +102,25 @@ const Post = ({
 					</div>
 				</div>
 
+				{/* <div className="flex flex-1">
+					<div className="flex flex-1 gap-x-1 text-sm">
+						<span onClick={goToUser} className="text-slate-900 font-bold cursor-pointer hover:underline">
+							{data?.account?.display_name}
+							</span>
+						<span className="text-slate-600 font-medium cursor-pointer hidden md:inline">
+							@{data?.account?.acct}
+						</span>·
+						<span className="text-slate-600 font-medium whitespace-nowrap">
+							{createdAt}
+						</span>
+					</div>
+					<div className="">
+						<DropdownMenuDemo />
+					</div>
+				</div>
+				<span className="text-slate-600 font-medium cursor-pointer hidden md:inline mt-[-10px]">
+							@{data?.account?.acct}
+				</span> */}
 
 				<div className="text-sm text-slate-900 mb-4" dangerouslySetInnerHTML={{ __html: data?.content ? data?.content : data?.reblog?.content }}>
 					{/* {data?.content} */}
