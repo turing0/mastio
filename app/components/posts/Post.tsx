@@ -87,13 +87,13 @@ const Post = ({
 			<div className="flex flex-col flex-1">
 				<div className="flex flex-1">
 					<div className="flex flex-1 gap-x-1 text-sm">
-						<span onClick={goToUser} className="text-slate-900 font-bold cursor-pointer hover:underline truncate inline-block">
+						<span onClick={goToUser} className="text-slate-900 font-bold cursor-pointer hover:underline">
 							{data?.account?.display_name}
 							</span>
-						<span className="text-slate-600 font-medium cursor-pointer truncate inline-block">
+						<span className="text-slate-600 font-medium cursor-pointer">
 							@{data?.account?.acct}
 						</span>·
-						<span className="text-slate-600 font-medium whitespace-nowrap">
+						<span className="text-slate-600 font-medium">
 							{createdAt}
 						</span>
 					</div>
