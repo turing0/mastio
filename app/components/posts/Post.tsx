@@ -122,7 +122,7 @@ const Post = ({
 							@{data?.account?.acct}
 				</span> */}
 
-				<div className="text-sm text-slate-900 mb-4 whitespace-pre-wrap" dangerouslySetInnerHTML={{ __html: data?.content ? data?.content : data?.reblog?.content }}>
+				<div className="text-sm text-slate-900 mb-4 break-words" dangerouslySetInnerHTML={{ __html: data?.content ? data?.content : data?.reblog?.content }}>
 					{/* {data?.content} */}
 					{/* <div dangerouslySetInnerHTML={{ __html: data?.content ? data?.content : data?.reblog?.content }} /> */}
 				</div>
