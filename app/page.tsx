@@ -1,9 +1,9 @@
 'use client';
 
 import Header from './components/Header'
-import Tabs from './components/radix/Tabs'
-import PanelItemTrends from './components/PanelItemTrends'
 import { useCurrentUserContext } from './context/UserProvider'
+import TweetForm from './components/TweetForm';
+import Feed from './components/posts/Feed';
 
 export default function Home() {
   const {server, account: currentUser} = useCurrentUserContext();
@@ -19,7 +19,9 @@ export default function Home() {
 		<title>Home | Mastio</title>
 		
 		<Header title="Home" />
-		<Tabs server={server} />
+    <TweetForm placeholder="What's up?" width="default" />
+    <Feed server={server} type="home" />
+		{/* <Tabs server={server} /> */}
     </>
   )
 }

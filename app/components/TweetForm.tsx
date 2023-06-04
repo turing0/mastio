@@ -8,9 +8,13 @@ import {
 } from 'react-icons/ri';
 
 import { cva } from 'class-variance-authority';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import Avatar from './radix/Avatar';
 import { useCurrentUserContext } from '../context/UserProvider';
+import { postWithToken } from '../libs/postWithToken';
+import toast from 'react-hot-toast';
+import usePosts from '../hooks/usePosts';
+import clsx from 'clsx';
 
 const TweetFormStyles = cva('flex flex-1 gap-x-2', {
 	variants: {
@@ -24,9 +28,47 @@ const TweetFormStyles = cva('flex flex-1 gap-x-2', {
 	},
 });
 
-function TweetForm({ width }: { width: 'default' | 'full' }) {
+interface FormProps {
+    placeholder?: string;
+    isComment?: boolean;
+    postId?: string;
+	width?: 'default' | 'full';
+}
+
+const TweetForm: React.FC<FormProps> = ({placeholder, isComment, postId, width}) => {
 	const [input, setInput] = useState<string>('');
     const { server, account } = useCurrentUserContext();
+    const { mutate: mutatePosts } = usePosts();
+    const [isLoading, setIsLoading] = useState(false);
+    const [status, setStatus] = useState('');
+    const [isTextareaFocused, setTextareaFocused] = useState(false);
+
+	const onSubmit = useCallback(async () => {
+        try {
+          setIsLoading(true);
+    
+          const url = isComment ? `${server}/api/v1/comments?postId=${postId}` : `https://${server}/api/v1/statuses`;
+    
+          await postWithToken(url, { 
+            language: "en",
+            media_ids: [],
+            sensitive: false,
+            spoiler_text: "",
+            status,
+            visibility: "public"
+        });
+    
+          toast.success('Tweet created');
+          setStatus('');
+          mutatePosts();
+        //   mutatePost();
+        } catch (error) {
+          toast.error('Something went wrong');
+        } finally {
+          setIsLoading(false);
+        }
+      }, [status, isComment, postId, mutatePosts, server]);
+
 
 	return (
 		<div className={TweetFormStyles({ width })}>
@@ -37,15 +79,43 @@ function TweetForm({ width }: { width: 'default' | 'full' }) {
 			/>
 			<form className="flex flex-col flex-1 gap-y-4">
 				<div className="flex flex-1">
-					<input
+					{/* <input
 						value={input}
 						onChange={(e) => setInput(e.target.value)}
 						type="text"
-						placeholder="What's up?"
+						placeholder={placeholder}
 						className="w-full px-4 py-3 text-xl border-transparent placeholder:text-slate-600 outline-0 focus:outline-none appearance-none focus:ring-0 focus:border-transparent"
-					/>
+					/> */}
+					<textarea
+						disabled={isLoading}
+						onChange={(event) => {
+							setStatus(event.target.value);
+							event.target.style.height = 'auto';
+							
+							event.target.style.height = event.target.scrollHeight + 'px';
+						}}
+						onFocus={(event) => {
+							if (!isTextareaFocused) {
+								setTextareaFocused(true)
+								event.target.style.height = "120px"
+								event.target.style.minHeight = "120px"
+								event.target.style.maxHeight = "500px"
+								event.target.style.overflow = 'auto';
+							}
+						}}
+						// onBlur={() => setTextareaFocused(false)}
+						value={status}
+						className="h-12 peer overflow-hidden
+						resize-none 
+						w-full px-4 py-3 text-xl border-transparent placeholder:text-slate-600 outline-0 focus:outline-none appearance-none focus:ring-0 focus:border-transparent
+						"
+						placeholder={placeholder}>
+                    </textarea>
 				</div>
-				<div className="flex justify-between items-center">
+				{/* <div className="flex justify-between items-center"> */}
+				<div className={clsx("flex justify-between items-center", {
+					'hidden': !isTextareaFocused,
+				})}>
 					<div className="flex items-center gap-x-4 px-4">
 						<Link href="/">
 							<RiImage2Line className="w-5 h-5" />
@@ -70,7 +140,7 @@ function TweetForm({ width }: { width: 'default' | 'full' }) {
 					</div>
 					<div>
 						<button
-							disabled={!input}
+							disabled={isLoading || !status.trim()}
 							className="inline-flex items-center font-bold rounded-full border px-4 py-2 text-sm bg-slate-900 text-white border-transparent disabled:opacity-50 transition-opacity duration-200"
 						>
 							Publish
