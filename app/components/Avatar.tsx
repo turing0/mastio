@@ -51,6 +51,7 @@ const Avatar: React.FC<AvatarProps> = ({ src, server, userId, isLarge, hasBorder
           onClick={onClick}
           // src={currentUser.avatar_static || '/images/placeholder.png'}
           src={src}
+          alt=""
         />
       </div>
     );

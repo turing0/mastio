@@ -1,6 +1,6 @@
 import useSWR from 'swr';
-import fetcher from '../libs/fetcher';
 import { useCurrentUserContext } from '../context/UserProvider';
+import fetcher from '../libs/fetcher';
 
 const usePost = (server: string, statusId?: string) => {
     const { server: currentServer, token } = useCurrentUserContext();

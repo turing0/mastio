@@ -1,4 +1,4 @@
-import { getRedisKey, setRedisKey } from '@/app/actions/redisKey';
+import { getRedisKey, setRedisKey } from '@/app/libs/redisKey';
 import axios from 'axios';
 import { NextResponse } from "next/server";
   

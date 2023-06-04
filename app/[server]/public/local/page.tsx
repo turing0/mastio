@@ -1,7 +1,8 @@
 'use client';
 
+import Feed from "@/app/components/posts/Feed";
 import Header from "@/app/components/Header";
-import PostFeed from "@/app/components/posts/PostFeed";
+import TweetForm from "@/app/components/TweetForm";
 
 interface LocalViewParams {
   server: string;
@@ -13,9 +14,11 @@ const LocalView = ({ params }: { params: LocalViewParams }) => {
 
     return (
       <>
-      {/* <title>Local Timeline</title> */}
-        <Header showBackArrow label="Local Timeline" />
-        <PostFeed server={server} type="local" />
+        <title>Local Timeline | Mastio</title>
+
+        <Header title="Local Timeline" />
+        <Feed server={server} type='local' />
+        {/* <PostFeed server={server} type="local" /> */}
       </>
      );
   }

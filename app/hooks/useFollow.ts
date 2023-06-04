@@ -2,9 +2,9 @@ import useLoginModal from "./useLoginModal";
 import { useCallback, useEffect, useState } from "react";
 import useSWR from "swr";
 import { toast } from "react-hot-toast";
-import { postWithToken } from "../actions/postWithToken";
 import fetcher from "../libs/fetcher";
 import { useCurrentUserContext } from "../context/UserProvider";
+import { postWithToken } from "../libs/postWithToken";
 
 const useRelationships = (server: string, userId: string) => {
     const { server: currentServer, token, account: currentUser } = useCurrentUserContext();

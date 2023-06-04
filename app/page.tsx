@@ -1,27 +1,14 @@
 'use client';
 
 import Header from './components/Header'
-import Form from './components/Form'
-import PostFeed from './components/posts/PostFeed'
-import { useCurrentUserContext } from './context/UserProvider';
-// import { useEffect, useState } from 'react';
-// import getCurrentUser from './actions/getCurrentUser';
-// import { useRouter } from 'next/navigation';
+import Tabs from './components/radix/Tabs'
+import PanelItemTrends from './components/PanelItemTrends'
+import { useCurrentUserContext } from './context/UserProvider'
 
-
-
-// export default function Home({ currentUser }: { currentUser: any }) {
 export default function Home() {
   const defaultServer = "mstdn.social";
 
   const {account: currentUser} = useCurrentUserContext();
-  // const currentUser = getCurrentUser();
-  // const [isCurrentUserFetched, setIsCurrentUserFetched] = useState(false);
-
-  // useEffect(() => {
-  //   setIsCurrentUserFetched(true);
-  // }, [currentUser]);
-  // const router = useRouter();
 
   if (!currentUser) {
     console.log('go to default server');
@@ -30,18 +17,10 @@ export default function Home() {
   
   return (
     <>
-      <Header label='Home' />
-      <Form placeholder="Inspire and be inspired..." />
-      <PostFeed type='home'/>
+		<title>Home | Mastio</title>
+		
+		<Header title="Home" />
+		<Tabs />
     </>
   )
 }
-
-// export const metadata: Metadata = {
-//   // title: 'Mastio',
-//   title: {
-//     default: 'Mastio',
-//     template: '%s | Mastio',
-//   },
-//   description: 'A Mastodon Web Client',
-// }

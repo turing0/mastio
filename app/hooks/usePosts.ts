@@ -1,8 +1,9 @@
 import useSWR from 'swr';
 import fetcher from '../libs/fetcher';
 import { useCurrentUserContext } from '../context/UserProvider';
+// import { useCurrentUserContext } from '../context/UserProvider';
 
-const usePosts = (server?: string, userId?: string, type?: string, maxId?: string) => {
+const usePosts = (server?: string, userId?: string, type?: string, maxId?: string, offset?: number) => {
     const { server: currentServer, token } = useCurrentUserContext();
     let url = null;
 
@@ -13,6 +14,8 @@ const usePosts = (server?: string, userId?: string, type?: string, maxId?: strin
     if (!userId) {
         if (type==='home') {
             url = `https://${server}/api/v1/timelines/home`;
+        } else if (type === 'trends') {
+            url = `https://${server}/api/v1/trends/statuses`;
         } else if (type === 'local') {
             url = `https://${server}/api/v1/timelines/public?limit=30&local=true`;
         } else if (type === 'public') {
@@ -29,7 +32,10 @@ const usePosts = (server?: string, userId?: string, type?: string, maxId?: strin
         url = `https://${server}/api/v1/accounts/${userId}/statuses?limit=30&exclude_replies=true`;
     }
     if (maxId) {
-        url = url + `&${maxId}`;
+        url = url + `&max_id=${maxId}`;
+    }
+    if (offset) {
+        url = url + `?offset=${offset}`;
     }
     const { data, error, isLoading, mutate } = useSWR(
         server ? url : null, 

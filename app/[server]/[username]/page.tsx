@@ -1,10 +1,14 @@
 'use client';
 
+import Feed from "@/app/components/posts/Feed";
 import Header from "@/app/components/Header";
-import PostFeed from "@/app/components/posts/PostFeed";
 import UserBio from "@/app/components/users/UserBio";
 import UserHero from "@/app/components/users/UserHero";
 import useUser from "@/app/hooks/useUser";
+// import PostFeed from "@/app/components/posts/PostFeed";
+// import UserBio from "@/app/components/users/UserBio";
+// import UserHero from "@/app/components/users/UserHero";
+// import useUser from "@/app/hooks/useUser";
 import { ClipLoader } from "react-spinners";
 
 interface UserViewParams {
@@ -22,20 +26,20 @@ const UserView = ({ params }: { params: UserViewParams }) => {
     const { data: fetchedUser, isLoading } = useUser(server, username);
 
     
-    if (isLoading || !fetchedUser) {
-      return (
-        <div className="flex justify-center items-center h-full">
-          <ClipLoader color="lightblue" size={80} />
-        </div>
-      )
-    }
+    // if (isLoading || !fetchedUser) {
+    //   return (
+    //     <div className="flex justify-center items-center h-full">
+    //       <ClipLoader color="lightblue" size={80} />
+    //     </div>
+    //   )
+    // }
   
     return (
       <>
-        <Header showBackArrow label={fetchedUser?.display_name} />
+        <Header showBackArrow title={fetchedUser?.display_name} />
         <UserHero server={server as string} username={username as string} />
         <UserBio server={server as string} userId={username as string} />
-        <PostFeed server={server as string} userId={fetchedUser?.id as string} />
+        <Feed server={server as string} userId={fetchedUser?.id as string} />
       </>
      );
   }

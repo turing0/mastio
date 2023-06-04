@@ -1,57 +1,34 @@
-interface ButtonProps {
-    label: string;
-    secondary?: boolean;
-    fullWidth?: boolean;
-    large?: boolean;
-    onClick: () => void;
-    onMouseEnter?: () => void;
-    onMouseLeave?: () => void;
-    disabled?: boolean;
-    outline?: boolean;
-    hideInitially?: boolean;
-  }
-  
-  const Button: React.FC<ButtonProps> = ({ 
-    label, 
-    secondary, 
-    fullWidth, 
-    onClick, 
-    onMouseEnter,
-    onMouseLeave,
-    large, 
-    disabled, 
-    outline,
-    hideInitially
-  }) => {
-    return ( 
-      <button
-        disabled={disabled}
-        onClick={onClick}
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
-        className={`
-          disabled:opacity-70
-          rounded-full
-          font-semibold
-          hover:opacity-80
-          transition
-          border-2
-          ${fullWidth ? 'w-full' : 'w-fit'}
-          ${secondary ? 'bg-white' : 'bg-sky-500'}
-          ${secondary ? 'text-black' : 'text-white'}
-          ${secondary ? 'border-black' : 'border-sky-500'}
-          ${large ? 'text-xl' : 'text-md'}
-          ${large ? 'px-5' : 'px-4'}
-          ${large ? 'py-3' : 'py-2'}
-          ${outline ? 'bg-transparent' : ''}
-          ${outline ? 'border-white' : ''}
-          ${outline ? 'text-white' : ''}
-          ${hideInitially ? 'hidden' : ''}
-        `}
-      >
-        {label}
-      </button>
-     );
-  }
-   
-  export default Button;
+import { cva } from 'class-variance-authority';
+
+interface Props {
+	children: React.ReactNode;
+	intent?: 'primary' | 'outline';
+	size?: 'default' | 'small' | 'large';
+}
+
+const ButtonStyles = cva(
+	'inline-flex items-center font-bold rounded-full border',
+	{
+		variants: {
+			intent: {
+				primary: 'bg-slate-900 text-white border-transparent hover:bg-slate-700',
+				outline: 'bg-transparent text-slate-900 border-slate-200 hover:bg-slate-200 hover:text-slate-700',
+			},
+			size: {
+				default: 'px-4 py-2 text-sm',
+				small: 'px-4 py-1 text-sm',
+				large: 'px-3 xl:px-20 py-3 text-lg',
+			},
+		},
+		defaultVariants: {
+			intent: 'primary',
+			size: 'default',
+		},
+	},
+);
+
+const Button = ({ children, intent, size, ...props }: Props) => (
+	<button className={ButtonStyles({ intent, size })}>{children}</button>
+);
+
+export default Button;

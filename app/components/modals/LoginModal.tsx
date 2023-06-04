@@ -98,7 +98,7 @@ const LoginModal = () => {
                         onSubmit();
                     }
                 }}
-                value={server!}
+                value={server || ''}
                 label="Mastodon Server Address"
                 disabled={isLoading}  
             />

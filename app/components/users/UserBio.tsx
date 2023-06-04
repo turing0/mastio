@@ -1,9 +1,9 @@
 import useUser from "@/app/hooks/useUser";
 import Button from "../Button";
 import { BiCalendar } from "react-icons/bi";
-import useFollow from "@/app/hooks/useFollow";
 import { useState } from "react";
 import { useCurrentUserContext } from "@/app/context/UserProvider";
+import useFollow from "@/app/hooks/useFollow";
 
 interface UserBioProps {
     server: string;
@@ -35,25 +35,20 @@ const UserBio: React.FC<UserBioProps> = ({ server, userId }) => {
         <div className="border-b-[1px] border-neutral-800 pb-4">
             <div className="flex justify-end p-2">
             {account?.url === fetchedUser?.url ? (
-                <Button secondary label="Edit profile" onClick={() => {}} />
+                <Button>Edit profile</Button>
                 ) : (
                 <Button
-                    onClick={toggleFollow} 
+                    // onClick={toggleFollow} 
                     // label={isFollowing ? 'Following' : 'Follow'}
                     // label={hovered && isFollowing ? 'Unfollow' : (isFollowing ? 'Following' : 'Follow')}
                     // label={hovered && isFollowing ? 'Unfollow' : (isFollowing ? 'Following' : (locked ? 'Request to follow' : 'Follow'))}
-                    label={isRequested ? 'Requested' : 
-                    (isFollowedBy&&isFollowing ? (hovered ? 'Unfollow' : 'Mutuals') : (isFollowing ? (hovered ? 'Unfollow' : 'Following') : (isFollowedBy ? (hovered ? 'Follow back' : 'Follows you') : (locked ? 'Request to follow' : 'Follow'))))}
-                    secondary={!isFollowing}
-                    outline={isFollowing}
-                    onMouseEnter={handleMouseEnter}
-                    onMouseLeave={handleMouseLeave}
-                />
-                )}
+                >{isRequested ? 'Requested' : 
+                (isFollowedBy&&isFollowing ? (hovered ? 'Unfollow' : 'Mutuals') : (isFollowing ? (hovered ? 'Unfollow' : 'Following') : (isFollowedBy ? (hovered ? 'Follow back' : 'Follows you') : (locked ? 'Request to follow' : 'Follow'))))}</Button>
+            )}
             </div>
             <div className="mt-8 px-4">
                 <div className="flex flex-col">
-                    <p className="text-white text-2xl font-semibold">
+                    <p className="text-2xl font-semibold">
                         {fetchedUser?.display_name}
                     </p>
                     <p className="text-md text-neutral-500">
@@ -64,7 +59,7 @@ const UserBio: React.FC<UserBioProps> = ({ server, userId }) => {
                     {/* <p className="text-white">
                         {fetchedUser?.note}
                     </p> */}
-                    <span className="text-white" dangerouslySetInnerHTML={{ __html: fetchedUser?.note }} />
+                    <span className="" dangerouslySetInnerHTML={{ __html: fetchedUser?.note }} />
                     <div className="
                         flex 
                         flex-row 
@@ -81,15 +76,15 @@ const UserBio: React.FC<UserBioProps> = ({ server, userId }) => {
                 </div>
                 <div className="flex flex-row items-center mt-4 gap-6">
                     <div className="flex flex-row items-center gap-1">
-                        <p className="text-white">{fetchedUser?.statuses_count}</p>
+                        <p>{fetchedUser?.statuses_count}</p>
                         <p className="text-neutral-500">Posts</p>
                     </div>
                     <div className="flex flex-row items-center gap-1">
-                        <p className="text-white">{fetchedUser?.following_count}</p>
+                        <p>{fetchedUser?.following_count}</p>
                         <p className="text-neutral-500">Following</p>
                     </div>
                     <div className="flex flex-row items-center gap-1">
-                        <p className="text-white">{fetchedUser?.followers_count || 0}</p>
+                        <p>{fetchedUser?.followers_count || 0}</p>
                         <p className="text-neutral-500">Followers</p>
                     </div>
                 </div>

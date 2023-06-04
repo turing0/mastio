@@ -1,8 +1,7 @@
 'use client';
 
+import Feed from "@/app/components/posts/Feed";
 import Header from "@/app/components/Header";
-import PostFeed from "@/app/components/posts/PostFeed";
-
 
 interface PublicViewParams {
   server: string;
@@ -14,8 +13,10 @@ const PublicView = ({ params }: { params: PublicViewParams }) => {
 
     return (
       <>
-        <Header showBackArrow label="Federated Timeline" />
-        <PostFeed server={server} type="public" />
+        <title>Federated Timeline | Mastio</title>
+        <Header title="Federated Timeline" />
+        <Feed server={server} type='public' />
+        {/* <PostFeed server={server} type="public" /> */}
       </>
      );
   }
