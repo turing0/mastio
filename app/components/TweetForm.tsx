@@ -43,10 +43,6 @@ const TweetForm: React.FC<FormProps> = ({placeholder, isComment, postId, width})
     const [status, setStatus] = useState('');
     const [isTextareaFocused, setTextareaFocused] = useState(false);
 
-	if (!account) {
-		return <></>;
-	}
-	
 	const onSubmit = useCallback(async () => {
         try {
           setIsLoading(true);
@@ -73,7 +69,9 @@ const TweetForm: React.FC<FormProps> = ({placeholder, isComment, postId, width})
         }
       }, [status, isComment, postId, mutatePosts, server]);
 
-
+	if (!account) {
+		return <></>;
+	}
 
 	return (
 		<div className={TweetFormStyles({ width })}>

@@ -70,49 +70,53 @@ const BigPost = ({
 	return (
 		<>
 		<div className="flex flex-1 gap-x-4">
-			<div>
-				
-			</div>
-			<div onClick={(ev: any) => {ev.stopPropagation();}} className="flex-shrink-0 cursor-pointer" >
-				<HoverCardDemo
-					src={data?.account?.avatar}
-					onAvatarClick={goToUser}
-					alt={data?.account?.display_name}
-					initials={data?.account?.display_name}
-					name={data?.account?.display_name}
-					username={data?.account?.acct}
-					following={'following'}
-					followers={'followers'}
-					description={'description'}
-				/>
-			</div>
-			<div className="flex flex-col flex-1">
-				<div className="flex flex-1">
-					<div className="flex flex-1 gap-x-1 text-sm">
-						<span onClick={goToUser} className="text-lg text-slate-900 font-bold cursor-pointer hover:underline">
-							{data?.account?.display_name}
-						</span>
-						
-						<span className="text-slate-600 font-medium">
-							{createdAt}
-						</span>
-					</div>
-					<div className="">
-						<DropdownMenuDemo />
-					</div>
+			<div className="flex flex-1 gap-x-4">
+				<div onClick={(ev: any) => {ev.stopPropagation();}} className="flex-shrink-0 cursor-pointer" >
+					<HoverCardDemo
+						src={data?.account?.avatar}
+						onAvatarClick={goToUser}
+						alt={data?.account?.display_name}
+						initials={data?.account?.display_name}
+						name={data?.account?.display_name}
+						username={data?.account?.acct}
+						following={'following'}
+						followers={'followers'}
+						description={'description'}
+					/>
 				</div>
-				<span className="text-slate-600 font-medium -mt-1">
-					@{data?.account?.acct}
-				</span>
+				<div className="flex flex-col flex-1">
+					<div className="flex flex-1">
+						<div className="flex flex-1 gap-x-1 text-sm">
+							<span onClick={goToUser} className="text-lg text-slate-900 font-bold cursor-pointer hover:underline">
+								{data?.account?.display_name}
+							</span>
 
-				<div className="text-sm text-slate-900 mb-4" dangerouslySetInnerHTML={{ __html: data?.content ? data?.content : data?.reblog?.content }}>
-					{/* <div dangerouslySetInnerHTML={{ __html: data?.content ? data?.content : data?.reblog?.content }} /> */}
+						</div>
+						<div className="">
+							<DropdownMenuDemo />
+						</div>
+					</div>
+					<span className="text-slate-600 font-medium -mt-2">
+						@{data?.account?.acct}
+					</span>
+					
 				</div>
-				{children}
-				
 			</div>
+			
 		</div>
-		<div>
+
+		<div className="text-sm text-slate-900 mb-4 py-2" dangerouslySetInnerHTML={{ __html: data?.content ? data?.content : data?.reblog?.content }}>
+			{/* <div dangerouslySetInnerHTML={{ __html: data?.content ? data?.content : data?.reblog?.content }} /> */}
+		</div>
+		{children}
+		
+		<div className="text-sm py-1">
+			<span className="text-slate-600 font-medium">
+				{createdAt}
+			</span>
+		</div>
+
+		<div className="border-t border-gray-400 py-2">
 			{/* <ul className="flex gap-x-10 xl:gap-x-14 text-xs text-slate-700 [&_li:first-child]:hidden [&_li:first-child]:lg:flex [&_li]:flex [&_li]:items-center [&_li]:gap-x-2 [&_li:xl]:gap-x-3 "> */}
 			<ul className="flex gap-x-10 xl:gap-x-14 text-xs text-slate-700 [&_li]:flex [&_li]:items-center [&_li]:gap-x-2 [&_li:xl]:gap-x-3 ">
 				{/* <li className="">
