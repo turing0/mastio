@@ -123,7 +123,13 @@ const Post = ({
 				</span> */}
 
 				<div 
-					className="text-sm text-slate-900 mb-4 whitespace-normal" 
+					className="text-sm text-slate-900 mb-4" 
+					style={{
+						maxHeight: '300px',
+						overflow: 'auto', 
+						textOverflow: 'ellipsis',
+						whiteSpace: 'nowrap'
+					  }}
 					dangerouslySetInnerHTML={{ __html: data?.content ? data?.content : data?.reblog?.content }}>
 					{/* {data?.content} */}
 					{/* <div dangerouslySetInnerHTML={{ __html: data?.content ? data?.content : data?.reblog?.content }} /> */}
