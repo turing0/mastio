@@ -36,6 +36,7 @@ const Input: React.FC<InputProps> = ({ placeholder, value, type = "text", onChan
                         text-lg 
                         bg-black 
                         border-0
+                        focus:ring-0
                         rounded-md
                         outline-none
                         text-white
