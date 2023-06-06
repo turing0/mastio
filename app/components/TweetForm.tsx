@@ -46,7 +46,7 @@ const TweetForm: React.FC<FormProps> = ({placeholder, isComment, postId, width})
     const [isTextareaFocused, setTextareaFocused] = useState(false);
 
 	const goToProfile = () => {
-		router.push(`/${server}/${account?.acct}`);
+		router.push(`/${server}/@${account?.acct}`);
 	};
 	const onSubmit = useCallback(async () => {
         try {
@@ -80,7 +80,7 @@ const TweetForm: React.FC<FormProps> = ({placeholder, isComment, postId, width})
 
 	return (
 		<div className={TweetFormStyles({ width })}>
-			<div onClick={goToProfile}>
+			<div onClick={goToProfile} className="cursor-pointer">
 				<Avatar
 					src={account?.avatar!}
 					alt={account?.display_name || ''}

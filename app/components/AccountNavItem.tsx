@@ -12,7 +12,7 @@ const AccountNavItem = ({ data }: {data: any}) => {
 	const {server, account} = useCurrentUserContext();
 
 	const goToProfile = () => {
-		router.push(`/${server}/${account?.acct}`);
+		router.push(`/${server}/@${account?.acct}`);
 	};
 
 	return (
