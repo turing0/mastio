@@ -6,7 +6,7 @@ import PopoverDemo from '../radix/PopoverDemo';
 import { MdFavoriteBorder } from 'react-icons/md'; 
 import { BsMastodon } from "react-icons/bs";
 import { FaBookmark, FaCompass, FaUser, FaUsers } from 'react-icons/fa'; 
-import { RiEarthLine, RiGroup2Line } from 'react-icons/ri';
+import { RiEarthLine, RiGroup2Line, RiHashtag } from 'react-icons/ri';
 
 import {
 	HiOutlineHome,
@@ -44,7 +44,7 @@ const items: NavLinkItem[] = [
 	{
 		href: '/explore',
 		text: 'Explore',
-		icon: <HiHashtag className="w-6 h-6" />,
+		icon: <RiHashtag className="w-6 h-6" />,
 	},
 	{
 		href: `/${server ? server : defaultServer}/public/local`,
@@ -120,7 +120,7 @@ const Nav = () => {
 			<div className="container mx-auto flex items-center justify-between px-4 py-0 border border-gray-300 h-12" >
 				<div className="ml-5">
 					<NavItem onClick={() => setSelectedNavItem('explore')} href={`/explore`} width="inline" size="default">
-						<HiHashtag className={clsx('w-6', 'h-6', { 'text-blue-500': selectedNavItem === 'explore' })} />
+						<RiHashtag className={clsx('w-6', 'h-6', { 'text-blue-500': selectedNavItem === 'explore' })} />
 					</NavItem>
 				</div>
 				<NavItem onClick={() => setSelectedNavItem('local')} href={`/${server ? server : defaultServer}/public/local`} width="inline" size="default">
