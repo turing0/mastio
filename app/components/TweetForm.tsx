@@ -15,6 +15,7 @@ import { postWithToken } from '../libs/postWithToken';
 import toast from 'react-hot-toast';
 import usePosts from '../hooks/usePosts';
 import clsx from 'clsx';
+import { useRouter } from 'next/navigation';
 
 const TweetFormStyles = cva('flex flex-1 gap-x-2', {
 	variants: {
@@ -36,6 +37,7 @@ interface FormProps {
 }
 
 const TweetForm: React.FC<FormProps> = ({placeholder, isComment, postId, width}) => {
+	const router = useRouter();
 	const [input, setInput] = useState<string>('');
     const { server, account } = useCurrentUserContext();
     const { mutate: mutatePosts } = usePosts();
@@ -43,6 +45,9 @@ const TweetForm: React.FC<FormProps> = ({placeholder, isComment, postId, width})
     const [status, setStatus] = useState('');
     const [isTextareaFocused, setTextareaFocused] = useState(false);
 
+	const goToProfile = () => {
+		router.push(`/${server}/${account?.acct}`);
+	};
 	const onSubmit = useCallback(async () => {
         try {
           setIsLoading(true);
@@ -75,11 +80,13 @@ const TweetForm: React.FC<FormProps> = ({placeholder, isComment, postId, width})
 
 	return (
 		<div className={TweetFormStyles({ width })}>
-			<Avatar
-				src={account?.avatar!}
-				alt={account?.display_name || ''}
-				initials=""
-			/>
+			<div onClick={goToProfile}>
+				<Avatar
+					src={account?.avatar!}
+					alt={account?.display_name || ''}
+					initials=""
+				/>
+			</div>
 			<form className="flex flex-col flex-1 gap-y-4">
 				<div className="flex flex-1">
 					{/* <input

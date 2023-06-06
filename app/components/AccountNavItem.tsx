@@ -1,16 +1,24 @@
 'use client';
 
 import Link from 'next/link';
-
 import { HiOutlineEllipsisHorizontal } from 'react-icons/hi2';
 import Avatar from './radix/Avatar';
+import { useRouter } from 'next/navigation';
+import { useCurrentUserContext } from '../context/UserProvider';
 
 
+const AccountNavItem = ({ data }: {data: any}) => {
+	const router = useRouter();
+	const {server, account} = useCurrentUserContext();
 
-const AccountNavItem = ({ data }: {data: any}) => (
-	<div className="flex flex-1 items-center gap-x-2 px-4 py-8 ">
+	const goToProfile = () => {
+		router.push(`/${server}/${account?.acct}`);
+	};
+
+	return (
+		<div className="flex flex-1 items-center gap-x-2 px-4 py-8 ">
 		<div className="flex items-center gap-x-3 flex-1">
-			<div className="flex flex-1 xl:flex-none justify-center xl:justify-start">
+			<div onClick={goToProfile} className="flex flex-1 xl:flex-none justify-center xl:justify-start cursor-pointer">
 				<Avatar
 					src={data?.avatar}
 					alt={data?.display_name}
@@ -28,6 +36,7 @@ const AccountNavItem = ({ data }: {data: any}) => (
 			</Link>
 		</div>
 	</div>
-);
+	)
+}
 
 export default AccountNavItem;
