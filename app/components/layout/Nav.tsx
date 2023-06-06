@@ -71,11 +71,11 @@ const items: NavLinkItem[] = [
 		text: 'Bookmarks',
 		icon: <HiOutlineBookmark className="w-6 h-6" />,
 	},
-	{
-		href: '/profile',
-		text: 'Profile',
-		icon: <HiOutlineUser className="w-6 h-6" />,
-	},
+	// {
+	// 	href: '/profile',
+	// 	text: 'Profile',
+	// 	icon: <HiOutlineUser className="w-6 h-6" />,
+	// },
 ];
 
 const Nav = () => {
