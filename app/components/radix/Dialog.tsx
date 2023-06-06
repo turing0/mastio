@@ -14,7 +14,7 @@ const DialogDemo = () => (
 			<div className="w-full flex justify-center xl:justify-start mt-5 appearance-none">
 				<Button size="large">
 					<HiOutlinePencil className="w-6 h-6 xl:hidden" />
-					<span className="hidden xl:flex">Tweet</span>
+					<span className="hidden xl:flex">Publish</span>
 				</Button>
 			</div>
 		</DialogPrimitive.Trigger>
