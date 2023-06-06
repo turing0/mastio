@@ -24,6 +24,7 @@ interface NavLinkItem {
 	href: string;
 	text: string;
 	icon?: ReactNode;
+	auth?: boolean;
 }
 
 const server = null;
@@ -89,7 +90,7 @@ const Nav = () => {
 					<NavItem href="/" width="inline" size="default">
 						<BsMastodon className="w-6 h-6" />
 					</NavItem>
-					{items.map(({ href, text, icon }, i) => (
+					{items.map(({ href, text, icon, auth }, i) => (
 						<div
 							key={`header-${i}`}
 							// value={`item-${i + 1}`}
@@ -104,7 +105,9 @@ const Nav = () => {
 						</div>
 					))}
 					<PopoverDemo />
-					<DialogDemo />
+					
+					{/* <DialogDemo /> */}
+					{account && <DialogDemo />}
 				</div>
 				<div>
 					<AccountNavItem data={account} />
