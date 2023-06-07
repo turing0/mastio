@@ -71,7 +71,6 @@ const Feed: React.FC<PostFeedProps> = ({ server, userId, type }) => {
         if (posts.length > 0) {
             const lastPostId = posts[posts.length - 1].id;
 			setMaxId(lastPostId);
-			setAllPosts(allPosts.concat(posts));
         } else {
 			setHasMoreData(false);
 		}
@@ -85,7 +84,8 @@ const Feed: React.FC<PostFeedProps> = ({ server, userId, type }) => {
             dataLength={allPosts.length}
             next={fetchMoreData}
             hasMore={hasMoreData}
-            loader={Loading()}
+            // loader={Loading()}
+			loader={hasMoreData || posts.length > 0 ? Loading() : null}
         >
 		<Suspense fallback={<Loading />}>
 			<ul className="[&_p:last-child]:text-slate-500 [&_p:first-child]:text-lg divide-y divide-slate-200">
