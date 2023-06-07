@@ -1,7 +1,6 @@
 'use client';
 
 import Header from "@/app/components/Header";
-import { ClipLoader } from "react-spinners";
 import Feed from "../components/posts/Feed";
 
 const BookmarksView = ( ) => {

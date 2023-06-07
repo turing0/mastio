@@ -5,7 +5,7 @@ import Button from '../Button';
 import UserCard from '../UserCard';
 import useFollow, { useRelationships } from '@/app/hooks/useFollow';
 import useUser from '@/app/hooks/useUser';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface Props {
 	src: string;
@@ -36,12 +36,21 @@ const HoverCardDemo = ({
 	followers,
 	onAvatarClick
 }: Props) => {
-    const { data } = useRelationships(server, userId);
+	const [isHovered, setIsHovered] = useState(false);
+    // const { data } = useRelationships(server, userId);
+	const [data, setData] = useState<any>(null);
     const [hovered, setHovered] = useState(false);
+	
+	useEffect(() => {
+        if (isHovered) {
+			const {data:fetchedData} = useRelationships(server, userId);
+            setData(fetchedData);
+        }
+    }, [isHovered]);
 	
 	return (
 		<HoverCardPrimitive.Root>
-			<HoverCardPrimitive.Trigger asChild>
+			<HoverCardPrimitive.Trigger asChild onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
 				<div onClick={onAvatarClick}>
 					<Avatar src={src} alt={alt} initials={initials} />
 				</div>
