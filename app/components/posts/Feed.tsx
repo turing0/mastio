@@ -65,12 +65,15 @@ const Feed: React.FC<PostFeedProps> = ({ server, userId, type }) => {
 	const [maxId, setMaxId] = useState<string | undefined>(undefined);
 	const [allPosts, setAllPosts] = useState([]);
 	const { data: posts = [] } = usePosts(server, userId, type, maxId);
+	const [hasMoreData, setHasMoreData] = useState(true);
 
     const fetchMoreData = () => {
         if (posts.length > 0) {
             const lastPostId = posts[posts.length - 1].id;
 			setMaxId(lastPostId);
-        }
+        } else {
+			setHasMoreData(false);
+		}
     };
 	useEffect(() => {
 		setAllPosts(allPosts.concat(posts));
@@ -80,7 +83,7 @@ const Feed: React.FC<PostFeedProps> = ({ server, userId, type }) => {
 		<InfiniteScroll
             dataLength={allPosts.length}
             next={fetchMoreData}
-            hasMore={true}
+            hasMore={hasMoreData}
             loader={Loading()}
         >
 		<Suspense fallback={<Loading />}>
@@ -125,6 +128,7 @@ const Feed: React.FC<PostFeedProps> = ({ server, userId, type }) => {
 					),
 				)}
 			</ul>
+			{!hasMoreData && <p>Reached the end</p>} {/* Display "Reached the end" when there is no more data */}
 		</Suspense>
 		</InfiniteScroll>
 	)
