@@ -55,7 +55,6 @@ const Post = ({
 	if (!server) {
         server = currentServer!;
     }
-	// const {data: relationData} = useRelationships(server!, data?.account?.acct);
     const { hasLiked, likeCount, toggleLike } = useLike(server!, statusId!, data?.favourited, data?.favourites_count);
     const { isBookmarking, toggleBookmark } = useBookmark(server!, statusId!, data?.bookmarked);
 
@@ -105,6 +104,8 @@ const Post = ({
 			<div onClick={(ev: any) => {ev.stopPropagation();}} className="flex-shrink-0 h-[50px]">
 				<HoverCardDemo
 					src={data?.account?.avatar}
+					server={server}
+					userId={data?.account?.acct}
 					onAvatarClick={goToUser}
 					alt={data?.account?.display_name}
 					initials={data?.account?.display_name}

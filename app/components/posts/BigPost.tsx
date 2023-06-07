@@ -106,6 +106,8 @@ const BigPost = ({
 				<div onClick={(ev: any) => {ev.stopPropagation();}} className="flex-shrink-0 cursor-pointer" >
 					<HoverCardDemo
 						src={data?.account?.avatar}
+						server={server}
+						userId={data?.account?.acct}
 						onAvatarClick={goToUser}
 						alt={data?.account?.display_name}
 						initials={data?.account?.display_name}
