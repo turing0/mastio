@@ -3,7 +3,7 @@ import Avatar from './Avatar';
 import clsx from 'clsx';
 import Button from '../Button';
 import UserCard from '../UserCard';
-import useFollow from '@/app/hooks/useFollow';
+import useFollow, { useRelationships } from '@/app/hooks/useFollow';
 import useUser from '@/app/hooks/useUser';
 import { useState } from 'react';
 
@@ -11,6 +11,7 @@ interface Props {
 	src: string;
 	server: string;
 	userId: string;
+	locked: boolean;
 	alt: string;
 	initials: string;
 	name: string;
@@ -25,6 +26,7 @@ const HoverCardDemo = ({
 	src,
 	server,
 	userId,
+	locked,
 	alt,
 	initials,
 	name,
@@ -34,8 +36,7 @@ const HoverCardDemo = ({
 	followers,
 	onAvatarClick
 }: Props) => {
-    const { data: fetchedUser } = useUser(server, userId);
-    const { isFollowing, isFollowedBy, isRequested, toggleFollow } = useFollow(server, fetchedUser?.id, fetchedUser?.locked);
+    const { data } = useRelationships(server, userId);
     const [hovered, setHovered] = useState(false);
 	
 	return (
@@ -73,8 +74,8 @@ const HoverCardDemo = ({
 							</div>
 							<div>
 								<Button intent="outline" size="default">
-								{isRequested ? 'Requested' : 
-                (isFollowedBy&&isFollowing ? (hovered ? 'Unfollow' : 'Mutuals') : (isFollowing ? (hovered ? 'Unfollow' : 'Following') : (isFollowedBy ? (hovered ? 'Follow back' : 'Follows you') : (fetchedUser?.locked ? 'Request to follow' : 'Follow'))))}
+								{data?.requested ? 'Requested' : 
+                (data?.followed_by&&data?.following ? (hovered ? 'Unfollow' : 'Mutuals') : (data?.following ? (hovered ? 'Unfollow' : 'Following') : (data?.followed_by ? (hovered ? 'Follow back' : 'Follows you') : (locked ? 'Request to follow' : 'Follow'))))}
 								</Button>
 							</div>
 						</div>

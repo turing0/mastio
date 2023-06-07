@@ -106,6 +106,7 @@ const Post = ({
 					src={data?.account?.avatar}
 					server={server}
 					userId={data?.account?.acct}
+					locked={data?.account?.locked}
 					onAvatarClick={goToUser}
 					alt={data?.account?.display_name}
 					initials={data?.account?.display_name}
