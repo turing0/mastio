@@ -107,7 +107,7 @@ const BigPost = ({
 					<HoverCardDemo
 						src={data?.account?.avatar}
 						server={server}
-						userId={data?.account?.acct}
+						userId={data?.account?.id}
 						locked={data?.account?.locked}
 						onAvatarClick={goToUser}
 						alt={data?.account?.display_name}
