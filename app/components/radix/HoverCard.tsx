@@ -38,13 +38,18 @@ const HoverCardDemo = ({
 }: Props) => {
 	const [isHovered, setIsHovered] = useState(false);
     // const { data } = useRelationships(server, userId);
-	const [data, setData] = useState<any>(null);
+	const [shouldFetch, setShouldFetch] = useState(false);
+	// const data = shouldFetch ? useRelationships(server, userId) : null;
+	const relationships = shouldFetch ? useRelationships(server, userId) : null;
+    const data = relationships ? relationships.data : null;
+	// const [data, setData] = useState<any>(null);
     const [hovered, setHovered] = useState(false);
 	
 	useEffect(() => {
         if (isHovered) {
-			const {data:fetchedData} = useRelationships(server, userId);
-            setData(fetchedData);
+            setShouldFetch(true);
+        } else {
+            setShouldFetch(false);
         }
     }, [isHovered]);
 	
