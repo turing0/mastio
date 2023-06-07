@@ -36,26 +36,13 @@ const HoverCardDemo = ({
 	followers,
 	onAvatarClick
 }: Props) => {
-	const [isHovered, setIsHovered] = useState(false);
     // const { data } = useRelationships(server, userId);
-	const [shouldFetch, setShouldFetch] = useState(false);
-	// const data = shouldFetch ? useRelationships(server, userId) : null;
-	const relationships = shouldFetch ? useRelationships(server, userId) : null;
-    const data = relationships ? relationships.data : null;
-	// const [data, setData] = useState<any>(null);
+
     const [hovered, setHovered] = useState(false);
-	
-	useEffect(() => {
-        if (isHovered) {
-            setShouldFetch(true);
-        } else {
-            setShouldFetch(false);
-        }
-    }, [isHovered]);
 	
 	return (
 		<HoverCardPrimitive.Root>
-			<HoverCardPrimitive.Trigger asChild onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+			<HoverCardPrimitive.Trigger asChild >
 				<div onClick={onAvatarClick}>
 					<Avatar src={src} alt={alt} initials={initials} />
 				</div>
@@ -88,8 +75,9 @@ const HoverCardDemo = ({
 							</div>
 							<div>
 								<Button intent="outline" size="default">
-								{data?.requested ? 'Requested' : 
-                (data?.[0]?.followed_by&&data?.[0]?.following ? (hovered ? 'Unfollow' : 'Mutuals') : (data?.[0]?.following ? (hovered ? 'Unfollow' : 'Following') : (data?.[0]?.followed_by ? (hovered ? 'Follow back' : 'Follows you') : (locked ? 'Request to follow' : 'Follow'))))}
+								{/* {data?.requested ? 'Requested' : 
+                (data?.[0]?.followed_by&&data?.[0]?.following ? (hovered ? 'Unfollow' : 'Mutuals') : (data?.[0]?.following ? (hovered ? 'Unfollow' : 'Following') : (data?.[0]?.followed_by ? (hovered ? 'Follow back' : 'Follows you') : (locked ? 'Request to follow' : 'Follow'))))} */}
+								Follow
 								</Button>
 							</div>
 						</div>
