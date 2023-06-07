@@ -71,6 +71,7 @@ const Feed: React.FC<PostFeedProps> = ({ server, userId, type }) => {
         if (posts.length > 0) {
             const lastPostId = posts[posts.length - 1].id;
 			setMaxId(lastPostId);
+			setAllPosts(allPosts.concat(posts));
         } else {
 			setHasMoreData(false);
 		}
