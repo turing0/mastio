@@ -89,6 +89,7 @@ const OffsetFeed: React.FC<PostFeedProps> = ({ server, userId, type }) => {
 							<Post
 								data={post}
 								server={server}
+								statusId={post.id}
 							>
 								<div style={{ 
 								display: 'flex', 
