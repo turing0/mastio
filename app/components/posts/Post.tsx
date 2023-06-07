@@ -19,6 +19,7 @@ import useLike from '@/app/hooks/useLike';
 import { useCurrentUserContext } from '@/app/context/UserProvider';
 import clsx from 'clsx';
 import useBookmark from '@/app/hooks/useBookmark';
+import { useRelationships } from '@/app/hooks/useFollow';
 
 interface Props {
 	data: Record<string, any>;
@@ -54,7 +55,7 @@ const Post = ({
 	if (!server) {
         server = currentServer!;
     }
-
+	// const {data: relationData} = useRelationships(server!, data?.account?.acct);
     const { hasLiked, likeCount, toggleLike } = useLike(server!, statusId!, data?.favourited, data?.favourites_count);
     const { isBookmarking, toggleBookmark } = useBookmark(server!, statusId!, data?.bookmarked);
 
@@ -111,7 +112,7 @@ const Post = ({
 					username={data?.account?.acct}
 					following={'following'}
 					followers={'followers'}
-					description={'description'}
+					description={data?.account?.note}
 				/>
 			</div>
 			<div className="flex flex-col flex-1">

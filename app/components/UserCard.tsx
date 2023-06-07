@@ -16,7 +16,8 @@ const UserCard = ({
 			<div className="text-base font-semibold leading-none">{name}</div>
 			<div className="text-sm text-slate-500 font-medium">@{username}</div>
 		</div>
-		<div className="text-sm mb-2">{description}</div>
+		{/* <div className="text-sm mb-2">{description}</div> */}
+		<div className="text-sm mb-2" dangerouslySetInnerHTML={{ __html: description }}></div>
 		<div className="flex gap-x-4">
 			<div className="flex gap-x-1">
 				<div className="text-sm font-bold leading-none">{following}</div>

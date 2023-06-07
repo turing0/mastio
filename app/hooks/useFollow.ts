@@ -94,3 +94,4 @@ const useFollow = (server: string, userId: string, locked: boolean) => {
 }
 
 export default useFollow;
+export { useRelationships };

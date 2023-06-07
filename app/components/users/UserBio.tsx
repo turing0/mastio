@@ -19,22 +19,22 @@ const UserBio: React.FC<UserBioProps> = ({ server, userId }) => {
     const [hovered, setHovered] = useState(false);
     const handleMouseEnter = () => {
         setHovered(true);
-        // if (isFollowing) {
-        //   setHovered(true);
-        // }
+        if (isFollowing) {
+          setHovered(true);
+        }
       };
       
     const handleMouseLeave = () => {
         setHovered(false);
-        // if (isFollowing) {
-        //     setHovered(false);
-        // }
+        if (isFollowing) {
+            setHovered(false);
+        }
     };
 
     return (
         <div className="border-b-[1px] border-neutral-800 pb-4">
             <div className="flex justify-end p-2">
-            {account?.url === fetchedUser?.url ? (
+            {account && account?.url === fetchedUser?.url ? (
                 <Button>Edit profile</Button>
                 ) : (
                 <Button
