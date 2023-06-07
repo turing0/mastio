@@ -7,12 +7,16 @@ import {
 	HiOutlineArrowPath,
 	HiOutlineChartBarSquare,
 	HiOutlineBookmark,
+	HiHeart,
 } from 'react-icons/hi2';
 import HoverCardDemo from '../radix/HoverCard';
 import DropdownMenuDemo from '../radix/DropdownMenu';
 import { useRouter } from 'next/navigation';
 import useLoginModal from '../../hooks/useLoginModal';
 import { formatDistanceToNowStrict } from 'date-fns';
+import useLike from '@/app/hooks/useLike';
+import { useCurrentUserContext } from '@/app/context/UserProvider';
+import clsx from 'clsx';
 
 interface Props {
 	data: Record<string, any>;
@@ -44,13 +48,16 @@ const Post = ({
 }: Props) => {
 	const router = useRouter();
     const loginModal = useLoginModal();
-
-
-
+    const { server: currentServer, username } = useCurrentUserContext();
+	if (!server) {
+        server = currentServer!;
+    }
 	// const { server: currentServer, username } = useCurrentUserContext();
     // if (!server) {
     //     server = currentServer!;
     // }
+
+    const { hasLiked, likeCount, toggleLike } = useLike(server!, statusId!, data?.favourited, data?.favourites_count);
 
 	const goToUser = useCallback((ev: any) => {
         ev.stopPropagation();
@@ -61,6 +68,16 @@ const Post = ({
         router.push(`/${server}/@${data.account.username}/${data.id}`);
     }, [router, data, server]);
 
+	const onLike = useCallback(async (ev: any) => {
+        ev.stopPropagation();
+    
+        if (!server || !username) {
+          return loginModal.onOpen();
+        }
+    
+        toggleLike();
+    }, [loginModal, toggleLike, server, username]);
+
 	const createdAt = useMemo(() => {
         if (!data?.created_at) {
             return null;
@@ -68,6 +85,8 @@ const Post = ({
 
         return formatDistanceToNowStrict(new Date(data.created_at));
     }, [data])
+
+    const LikeIcon = hasLiked ? HiHeart : HiOutlineHeart;
 
 	
 	return (
@@ -153,11 +172,17 @@ const Post = ({
                                 {data?.reblogs_count || ''}
                             </p>
 						</li>
-						<li>
-							<HiOutlineHeart className="w-5 h-5" />
+						<li onClick={onLike}
+							className="
+							transition 
+							hover:text-red-500
+						"
+						>
+							{/* <HiOutlineHeart className="w-5 h-5" /> */}
+							<LikeIcon className={clsx(hasLiked && "text-red-500", "w-5 h-5")} />
 							{/* {data?.favourites_count || ''} */}
-							<p className="w-5">
-                                {data?.favourites_count || ''}
+							<p className={clsx(hasLiked && "text-red-500", "w-5")}>
+								{likeCount || ''}
                             </p>
 						</li>
 						<li>

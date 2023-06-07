@@ -16,7 +16,7 @@ import {
 	HiOutlineBookmark,
 	HiOutlineUser,
 } from 'react-icons/hi2';
-import AccountNavItem from '../AccountNavItem';
+import AccountNavItem from './AccountNavItem';
 import clsx from 'clsx';
 import { useCurrentUserContext } from '@/app/context/UserProvider';
 

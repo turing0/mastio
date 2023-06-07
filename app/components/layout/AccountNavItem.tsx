@@ -2,9 +2,9 @@
 
 import Link from 'next/link';
 import { HiOutlineEllipsisHorizontal } from 'react-icons/hi2';
-import Avatar from './radix/Avatar';
+import Avatar from '../radix/Avatar';
 import { useRouter } from 'next/navigation';
-import { useCurrentUserContext } from '../context/UserProvider';
+import { useCurrentUserContext } from '../../context/UserProvider';
 
 
 const AccountNavItem = ({ data }: {data: any}) => {
