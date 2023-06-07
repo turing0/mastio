@@ -8,6 +8,7 @@ import {
 	HiOutlineChartBarSquare,
 	HiOutlineBookmark,
 	HiHeart,
+	HiBookmark,
 } from 'react-icons/hi2';
 import HoverCardDemo from '../radix/HoverCard';
 import DropdownMenuDemo from '../radix/DropdownMenu';
@@ -17,6 +18,7 @@ import { formatDistanceToNowStrict } from 'date-fns';
 import useLike from '@/app/hooks/useLike';
 import { useCurrentUserContext } from '@/app/context/UserProvider';
 import clsx from 'clsx';
+import useBookmark from '@/app/hooks/useBookmark';
 
 interface Props {
 	data: Record<string, any>;
@@ -52,12 +54,9 @@ const Post = ({
 	if (!server) {
         server = currentServer!;
     }
-	// const { server: currentServer, username } = useCurrentUserContext();
-    // if (!server) {
-    //     server = currentServer!;
-    // }
 
     const { hasLiked, likeCount, toggleLike } = useLike(server!, statusId!, data?.favourited, data?.favourites_count);
+    const { isBookmarking, toggleBookmark } = useBookmark(server!, statusId!, data?.bookmarked);
 
 	const goToUser = useCallback((ev: any) => {
         ev.stopPropagation();
@@ -77,6 +76,15 @@ const Post = ({
     
         toggleLike();
     }, [loginModal, toggleLike, server, username]);
+	const onBookmark = useCallback(async (ev: any) => {
+        ev.stopPropagation();
+    
+        if (!server || !username) {
+          return loginModal.onOpen();
+        }
+    
+        toggleBookmark();
+    }, [loginModal, toggleBookmark, server, username]);
 
 	const createdAt = useMemo(() => {
         if (!data?.created_at) {
@@ -87,7 +95,7 @@ const Post = ({
     }, [data])
 
     const LikeIcon = hasLiked ? HiHeart : HiOutlineHeart;
-
+    const BookmarkIcon = isBookmarking ? HiBookmark : HiOutlineBookmark;
 	
 	return (
 		<div onClick={goToPost}
@@ -185,8 +193,14 @@ const Post = ({
 								{likeCount || ''}
                             </p>
 						</li>
-						<li>
-							<HiOutlineBookmark className="w-5 h-5" />
+						<li onClick={onBookmark}
+							className="
+							transition 
+							hover:text-yellow-500
+						"
+						>
+							{/* <HiOutlineBookmark className="w-5 h-5" /> */}
+							<BookmarkIcon className={clsx(isBookmarking && "text-yellow-500", "w-5 h-5")} />
 						</li>
 						{/* <li>
 							<HiArrowUpTray className="w-5 h-5" />
