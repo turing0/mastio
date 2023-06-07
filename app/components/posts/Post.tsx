@@ -110,8 +110,8 @@ const Post = ({
 					initials={data?.account?.display_name}
 					name={data?.account?.display_name}
 					username={data?.account?.acct}
-					following={'following'}
-					followers={'followers'}
+					following={data?.account?.following_count}
+					followers={data?.account?.followers_count}
 					description={data?.account?.note}
 				/>
 			</div>
