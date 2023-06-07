@@ -59,7 +59,7 @@ interface PostFeedProps {
 	server?: string;
 	userId?: string;
 	type?: string;
-  }
+}
 
 const Feed: React.FC<PostFeedProps> = ({ server, userId, type }) => {
 	const [maxId, setMaxId] = useState<string | undefined>(undefined);

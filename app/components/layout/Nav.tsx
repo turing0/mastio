@@ -27,8 +27,8 @@ interface NavLinkItem {
 	auth?: boolean;
 }
 
-const server = null;
 const defaultServer = "mstdn.social";
+const {server} = useCurrentUserContext();
 
 const items: NavLinkItem[] = [
 	{

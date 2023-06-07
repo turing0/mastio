@@ -75,7 +75,7 @@ const HoverCardDemo = ({
 							<div>
 								<Button intent="outline" size="default">
 								{data?.requested ? 'Requested' : 
-                (data?.followed_by&&data?.following ? (hovered ? 'Unfollow' : 'Mutuals') : (data?.following ? (hovered ? 'Unfollow' : 'Following') : (data?.followed_by ? (hovered ? 'Follow back' : 'Follows you') : (locked ? 'Request to follow' : 'Follow'))))}
+                (data?.[0]?.followed_by&&data?.[0]?.following ? (hovered ? 'Unfollow' : 'Mutuals') : (data?.[0]?.following ? (hovered ? 'Unfollow' : 'Following') : (data?.[0]?.followed_by ? (hovered ? 'Follow back' : 'Follows you') : (locked ? 'Request to follow' : 'Follow'))))}
 								</Button>
 							</div>
 						</div>
