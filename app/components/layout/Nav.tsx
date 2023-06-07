@@ -27,58 +27,58 @@ interface NavLinkItem {
 	auth?: boolean;
 }
 
-const defaultServer = "mstdn.social";
-const {server} = useCurrentUserContext();
-
-const items: NavLinkItem[] = [
-	{
-		href: '/',
-		text: 'Home',
-		icon: <HiOutlineHome className="w-6 h-6" />,
-	},
-	{
-		href: '/notifications',
-		text: 'Notifications',
-		icon: <HiOutlineBell className="w-6 h-6" />,
-	},
-	{
-		href: '/explore',
-		text: 'Explore',
-		icon: <RiHashtag className="w-6 h-6" />,
-	},
-	{
-		href: `/${server ? server : defaultServer}/public/local`,
-		text: 'Local',
-		icon: <RiGroup2Line className="w-6 h-6" />,
-	},
-	{
-		href: `/${server ? server : defaultServer}/public`,
-		text: 'Federated',
-		icon: <RiEarthLine className="w-6 h-6" />,
-	},
-	// {
-	// 	href: '/messages',
-	// 	text: 'Messages',
-	// 	icon: <HiOutlineEnvelope className="w-6 h-6" />,
-	// },
-	{
-		href: '/favorites',
-		text: 'Favorites',
-		icon: <MdFavoriteBorder className="w-6 h-6" />,
-	},
-	{
-		href: '/bookmarks',
-		text: 'Bookmarks',
-		icon: <HiOutlineBookmark className="w-6 h-6" />,
-	},
-	// {
-	// 	href: '/profile',
-	// 	text: 'Profile',
-	// 	icon: <HiOutlineUser className="w-6 h-6" />,
-	// },
-];
-
 const Nav = () => {
+	const defaultServer = "mstdn.social";
+	const {server} = useCurrentUserContext();
+
+	const items: NavLinkItem[] = [
+		{
+			href: '/',
+			text: 'Home',
+			icon: <HiOutlineHome className="w-6 h-6" />,
+		},
+		{
+			href: '/notifications',
+			text: 'Notifications',
+			icon: <HiOutlineBell className="w-6 h-6" />,
+		},
+		{
+			href: '/explore',
+			text: 'Explore',
+			icon: <RiHashtag className="w-6 h-6" />,
+		},
+		{
+			href: `/${server ? server : defaultServer}/public/local`,
+			text: 'Local',
+			icon: <RiGroup2Line className="w-6 h-6" />,
+		},
+		{
+			href: `/${server ? server : defaultServer}/public`,
+			text: 'Federated',
+			icon: <RiEarthLine className="w-6 h-6" />,
+		},
+		// {
+		// 	href: '/messages',
+		// 	text: 'Messages',
+		// 	icon: <HiOutlineEnvelope className="w-6 h-6" />,
+		// },
+		{
+			href: '/favorites',
+			text: 'Favorites',
+			icon: <MdFavoriteBorder className="w-6 h-6" />,
+		},
+		{
+			href: '/bookmarks',
+			text: 'Bookmarks',
+			icon: <HiOutlineBookmark className="w-6 h-6" />,
+		},
+		// {
+		// 	href: '/profile',
+		// 	text: 'Profile',
+		// 	icon: <HiOutlineUser className="w-6 h-6" />,
+		// },
+	];
+	
 	const [selectedNavItem, setSelectedNavItem] = useState("explore");
 	const {account} = useCurrentUserContext();
 
