@@ -34,16 +34,17 @@ interface FormProps {
     isComment?: boolean;
     postId?: string;
 	width?: 'default' | 'full';
+	showInitally?: boolean;
 }
 
-const TweetForm: React.FC<FormProps> = ({placeholder, isComment, postId, width}) => {
+const TweetForm: React.FC<FormProps> = ({placeholder, isComment, postId, width, showInitally}) => {
 	const router = useRouter();
 	const [input, setInput] = useState<string>('');
     const { server, account } = useCurrentUserContext();
     const { mutate: mutatePosts } = usePosts();
     const [isLoading, setIsLoading] = useState(false);
     const [status, setStatus] = useState('');
-    const [isTextareaFocused, setTextareaFocused] = useState(false);
+    const [isTextareaFocused, setTextareaFocused] = useState(showInitally);
 
 	const goToProfile = () => {
 		router.push(`/${server}/@${account?.acct}`);

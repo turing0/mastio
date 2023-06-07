@@ -36,7 +36,7 @@ const DialogDemo = () => (
 					Make a Tweet
 				</DialogPrimitive.Description>
 
-				<TweetForm placeholder="What's up?" width="full" />
+				<TweetForm placeholder="What's up?" width="full" showInitally />
 
 				<DialogPrimitive.Close asChild>
           {/* <button className="Button green">Save changes</button> */}
