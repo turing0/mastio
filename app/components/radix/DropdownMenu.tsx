@@ -12,7 +12,7 @@ import {
 	HiCodeBracket,
 	HiOutlineFlag,
 } from 'react-icons/hi2';
-import NavItem from '../NavItem';
+import NavItem from '../layout/NavItem';
 import clsx from 'clsx';
 
 interface AccordionItem {

@@ -1,6 +1,6 @@
 import { ReactNode, useState } from 'react';
 import DialogDemo from '../radix/Dialog';
-import NavItem from '../NavItem';
+import NavItem from './NavItem';
 import PopoverDemo from '../radix/PopoverDemo';
 
 import { MdFavoriteBorder } from 'react-icons/md'; 
@@ -110,7 +110,9 @@ const Nav = () => {
 					{account && <DialogDemo />}
 				</div>
 				<div>
-					<AccountNavItem data={account} />
+					{/* <AccountNavItem data={account} /> */}
+					{account && <AccountNavItem data={account} />
+}
 				</div>
 			</div>
 		</header>

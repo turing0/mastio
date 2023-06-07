@@ -10,7 +10,7 @@ import {
 	HiListBullet,
 	HiOutlineUserGroup,
 } from 'react-icons/hi2';
-import NavItem from '../NavItem';
+import NavItem from '../layout/NavItem';
 import Accordion from './Accordion';
 
 interface NavLinkItem {
