@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://mastio.app" target="_blank" rel="noopener noreferrer">
-    <img width="160" height="160" src="./public/logo.svg" alt="Mastio logo">
+    <img width="100" height="100" src="./public/logo.svg" alt="Mastio logo">
   </a>
 </p>
 
