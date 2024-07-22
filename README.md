@@ -1,8 +1,6 @@
-
-
 <p align="center">
   <a href="https://mastio.app" target="_blank" rel="noopener noreferrer">
-    <img width="160" height="160" src="./public/logo.svg" alt="Mastio logo">
+    <img width="100" height="100" src="./public/logo.svg" alt="Mastio logo">
   </a>
 </p>
 
@@ -12,11 +10,7 @@
 The fast and intuitive Mastodon web client for seamless social networking.
 </p>
 
-
 > Mastio is currently in development, and we welcome contributions from the  community. We appreciate your feedback and suggestions as we work to  improve and refine the Mastio experience. Join us in creating a better Mastodon web client for everyone!
-
-
-
 
 ## Getting Started
 
@@ -53,11 +47,16 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
-
-
 ## Stack
+
 - [Next.js](https://nextjs.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Radix](https://www.radix-ui.com/)
 - [Storybook](https://storybook.js.org/)
 - [Vercel](https://vercel.com/)
+
+## License
+
+[The MIT License (MIT)](https://raw.githubusercontent.com/turing0/mastio/main/LICENSE)
+
+This project icon is licensed under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
