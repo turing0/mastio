@@ -20,4 +20,13 @@ const getRedisKey = async (key: string) => {
     return null;
   };
 
-export { setRedisKey, getRedisKey };
+const incrementRedisKey = async (key: string) => {
+  if (key) {
+    const value = await redis.incr(key);
+    // console.log('incrementRedisKey: ', value);
+    return value;
+  }
+  return null;
+};
+
+export { setRedisKey, getRedisKey, incrementRedisKey };
