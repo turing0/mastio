@@ -14,9 +14,12 @@ export interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({
     children
 }) => {
+    const hideMessage = localStorage.getItem('hideMsg0722');
+	const nCount = hideMessage? 0:1
+
     return (
         <div className="min-h-screen flex max-w-7xl mx-auto xl:grid xl:grid-cols-10 gap-5">
-			<Nav />
+			<Nav notificationCount={nCount} />
 
 			<main className="col-span-5 w-full border-x border-slate-200">
                 {children}

@@ -10,18 +10,19 @@ interface LocalViewParams {
 }
 
 const LocalView = ({ params }: { params: LocalViewParams }) => {
-    const server = params.server;
+  const server = params.server;
 
-    return (
-      <>
-        <title>Local Timeline | Mastio</title>
+  return (
+    <>
+      <title>Local Timeline | Mastio</title>
 
-        <Header title="Local Timeline" />
-        <Feed server={server} type='local' />
-        {/* <PostFeed server={server} type="local" /> */}
-      </>
-     );
-  }
+      <Header title="Local Timeline" />
+      
+      <Feed server={server} type='local' />
+      {/* <PostFeed server={server} type="local" /> */}
+    </>
+  );
+}
    
 export default LocalView;
 

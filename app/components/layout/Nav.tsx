@@ -25,9 +25,10 @@ interface NavLinkItem {
 	text: string;
 	icon?: ReactNode;
 	auth?: boolean;
+	badgeCount?: number;
 }
 
-const Nav = () => {
+const Nav = ({ notificationCount }: { notificationCount?: number }) => {
 	const defaultServer = "mstdn.social";
 	const {server} = useCurrentUserContext();
 
@@ -41,6 +42,7 @@ const Nav = () => {
 			href: '/notifications',
 			text: 'Notifications',
 			icon: <HiOutlineBell className="w-6 h-6" />,
+			badgeCount: notificationCount
 		},
 		{
 			href: '/explore',
@@ -90,13 +92,13 @@ const Nav = () => {
 					<NavItem href="/" width="inline" size="default">
 						<BsMastodon className="w-6 h-6" />
 					</NavItem>
-					{items.map(({ href, text, icon, auth }, i) => (
+					{items.map(({ href, text, icon, auth, badgeCount }, i) => (
 						<div
 							key={`header-${i}`}
 							// value={`item-${i + 1}`}
 							className="rounded-lg focus:outline-none overflow-hidden"
 						>
-							<NavItem href={href} width="inline" size="default">
+							<NavItem href={href} width="inline" size="default" badgeCount={badgeCount}>
 								{icon}
 								<div className="hidden xl:inline-flex flex-none text-lg font-medium">
 									{text}
