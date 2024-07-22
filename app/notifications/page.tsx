@@ -101,7 +101,7 @@ export default function NotifiPage() {
                   }}
                   className="mr-2"
                 />
-                <label htmlFor="dontShowAgain">Don't show this message again</label>
+                <label htmlFor="dontShowAgain">{"Don't show this message again"}</label>
               </div>
             </div>
           </div>
