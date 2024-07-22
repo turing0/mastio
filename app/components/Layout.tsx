@@ -6,6 +6,7 @@ import Panel from "./Panel";
 import PanelItem from "./PanelItem";
 import PanelItemTrends from "./PanelItemTrends";
 import Search from "./layout/Search";
+import { useEffect, useState } from "react";
 
 export interface LayoutProps {
     children: React.ReactNode;
@@ -14,7 +15,12 @@ export interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({
     children
 }) => {
-    const hideMessage = localStorage.getItem('hideMsg0722');
+	const [hideMessage, setHideMessage] = useState<boolean>(true);
+	useEffect(() => {
+		const storedValue = localStorage.getItem('hideMsg0722');
+		setHideMessage(storedValue?true:false);
+	  }, []);
+    // const hideMessage = localStorage.getItem('hideMsg0722');
 	const nCount = hideMessage? 0:1
 
     return (
